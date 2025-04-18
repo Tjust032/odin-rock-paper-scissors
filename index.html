@@ -1,0 +1,59 @@
+<script>
+    function getComputerChoice() {
+        choice = Math.floor(Math.random() * 3);
+        if (choice == 0) {
+            return "rock";
+        } else if (choice == 1) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+    
+    function getPlayerChoice() {
+        let playerChoice = prompt("Enter rock, paper, or scissors:").toLowerCase();
+        while (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
+            playerChoice = prompt("Invalid choice. Please enter rock, paper, or scissors:").toLowerCase();
+        }
+        return playerChoice; 
+    }
+
+    function playGame() {
+        let playerScore = 0;
+        let computerScore = 0;
+        function playRound() {
+            const playerChoice = getPlayerChoice();
+            const computerChoice = getComputerChoice();
+            console.log(`Player chose: ${playerChoice}`);
+            console.log(`Computer chose: ${computerChoice}`);
+    
+            if (playerChoice === computerChoice) {
+                console.log("It's a tie!");
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "scissors" && computerChoice === "paper")
+            ) {
+                console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+                playerScore++;
+            } else {
+                console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
+                computerScore++;
+            }
+            console.log(`Score - Player: ${playerScore}, Computer: ${computerScore}`);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            playRound();
+        }
+
+        if (playerScore > computerScore) {
+            console.log("Congratulations! You win the game!");
+        } else if (playerScore < computerScore) {
+            console.log("Sorry! You lose!");
+        } else {
+            console.log("Its a tie!");
+        }
+    }
+    playGame();
+</script>
