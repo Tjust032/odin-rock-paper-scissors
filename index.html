@@ -1,59 +1,49 @@
-<script>
-    function getComputerChoice() {
-        choice = Math.floor(Math.random() * 3);
-        if (choice == 0) {
-            return "rock";
-        } else if (choice == 1) {
-            return "paper";
-        } else {
-            return "scissors";
-        }
-    }
-    
-    function getPlayerChoice() {
-        let playerChoice = prompt("Enter rock, paper, or scissors:").toLowerCase();
-        while (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors") {
-            playerChoice = prompt("Invalid choice. Please enter rock, paper, or scissors:").toLowerCase();
-        }
-        return playerChoice; 
-    }
-
-    function playGame() {
-        let playerScore = 0;
-        let computerScore = 0;
-        function playRound() {
-            const playerChoice = getPlayerChoice();
-            const computerChoice = getComputerChoice();
-            console.log(`Player chose: ${playerChoice}`);
-            console.log(`Computer chose: ${computerChoice}`);
-    
-            if (playerChoice === computerChoice) {
-                console.log("It's a tie!");
-            } else if (
-                (playerChoice === "rock" && computerChoice === "scissors") ||
-                (playerChoice === "paper" && computerChoice === "rock") ||
-                (playerChoice === "scissors" && computerChoice === "paper")
-            ) {
-                console.log(`You win! ${playerChoice} beats ${computerChoice}`);
-                playerScore++;
-            } else {
-                console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
-                computerScore++;
-            }
-            console.log(`Score - Player: ${playerScore}, Computer: ${computerScore}`);
-        }
-
-        for (let i = 0; i < 5; i++) {
-            playRound();
-        }
-
-        if (playerScore > computerScore) {
-            console.log("Congratulations! You win the game!");
-        } else if (playerScore < computerScore) {
-            console.log("Sorry! You lose!");
-        } else {
-            console.log("Its a tie!");
-        }
-    }
-    playGame();
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Rock Paper Scissors!</h1>
+        </div>
+        <div class="game">
+            <div class="round">
+                <h2>Round: <span id="round-number">1</span></h2>
+            </div>
+            <div class="scoreboard">
+                <div class="score">
+                    <h2>Player</h2>
+                    <p id="player-score">0</p>
+                </div>
+                <div class="score">
+                    <h2>Computer</h2>
+                    <p id="computer-score">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="choices">
+            <button id="rock" class="choice">
+                <img src="https://symbl-world.akamaized.net/i/webp/f2/0e29d778af528ff18585b3c4088835.webp" alt="Rock">
+            </button>
+            <button id="paper" class="choice">
+                <img src="https://static-00.iconduck.com/assets.00/note-emoji-2048x2048-xd4brm3q.png" alt="Paper">
+            </button>
+            <button id="scissors" class="choice">
+                <img src="https://wh0.github.io/assets/2020/scissors-apple-open.png" alt="Scissors">
+            </button>
+        </div>
+        <div class="game-result">
+            <h2 id="result"></h2>
+        </div>
+        <div class="end-game">
+            <h2 id="end-message"></h2>
+        </div>
+    </div>
+</body>
+</html>
