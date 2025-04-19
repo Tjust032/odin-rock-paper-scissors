@@ -12,7 +12,7 @@ This is a simple Rock Paper Scissors game built as part of [The Odin Project](ht
 
 ## Recent Updates
 
-- **Date:** _Today_  
+- **Date:** _April 19th, 2025_  
     **Update:** Added a user interface (UI) to enhance the gameplay experience.
 
 ## How to Play
